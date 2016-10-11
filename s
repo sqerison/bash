@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 ##############################
 #
-#  ***WARNING - STILL IN BETA ***
+#  *** WARNING - STILL IN BETA ***
 #
 #  Description: Script for connecting through several jump hosts
 #
@@ -25,7 +25,7 @@
 #  Requirement:
 #  ----------------
 #   ssh-agent - should be configured with privat key and key forwarding
-#   ~/.ssh/config - jump hosts should be defined should be defined
+#   ~/.ssh/config - jump hosts should be defined
 #
 #   Example of usage:
 #   ---------------
