@@ -11,22 +11,20 @@ RECEIVER=${5:-"YOUR_EMAIL@gmail.com"}
 RESULT_FULL=$(curl -s https://be.wizzair.com/7.12.1/Api/asset/farechart \
 	-H 'user-agent: Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1'\
 	-H 'content-type: application/json;charset=UTF-8'\
-	--data-binary @<(cat <<EOF
-	{
+	--data-binary '{
 	  "wdc": true,
 	  "flightList": [
 	    {
-	      "departureStation": "$FROM",
-	      "arrivalStation": "$TO",
-	      "date": "$DATE"
+	      "departureStation": "'$FROM'",
+	      "arrivalStation": "'$TO'",
+	      "date": "'$DATE'"
 	    }
 	  ],
 	  "dayInterval": 3,
-	  "adultCount": $ADULT,
+	  "adultCount": '$ADULT',
 	  "childCount": 0,
 	  "isRescueFare": false
-	} 
-EOF)	--compressed)
+	}'	--compressed)
 
 # Get price only for future comparation
 PRICE=$(echo $RESULT_FULL | jq -r '.outboundFlights[] | select(.date=="2018-09-03T00:00:00") | .price.amount')
